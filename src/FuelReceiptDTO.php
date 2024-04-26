@@ -13,14 +13,15 @@ class FuelReceiptDTO
         public string $refueled,
         public string $total,
         public string $currency,
+        public string $fuelPrice
     )
     {
     }
 
-    private function getFuelPrice(): float
-    {
-        return $this->total / $this->refueled;
-    }
+
+
+
+
 
     public function toArray(): array
     {
@@ -33,7 +34,7 @@ class FuelReceiptDTO
             'refueled' => $this->refueled,
             'total' => $this->total,
             'currency' => $this->currency,
-            'fuelPrice' => $this->getFuelPrice(),
+            'fuelPrice' => $this->fuelPrice,
         ];
     }
 

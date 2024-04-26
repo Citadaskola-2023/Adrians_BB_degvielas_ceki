@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     );
 
     try {
-        $pdo = new PDO("mysql:host=mysql;dbname=fuel;charset=utf8mb4", 'root', 'root', [
+        $pdo = new PDO("mysql:host=mysql;dbname=myapp;charset=utf8mb4", 'root', 'root', [
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         ]);
     } catch (PDOException $e) {
@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $sql = <<<MySQL
-        INSERT INTO fuel_receipts (license_plate, date_time, odometer, petrol_station, fuel_type, refueled, total, currency, fuel_price)
+        INSERT INTO ceks (licensePlate, dateTime, odometer, petrolStation, fuelType, refueled, total, currency, fuelPrice)
         VALUES (:licencePlate, :dateTime, :odometer, :petrolStation, :fuelType, :fuelPrice :refueled, :total, :currency)
         MySQL;
 
