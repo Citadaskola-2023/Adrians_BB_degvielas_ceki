@@ -25,12 +25,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $sql = <<<MySQL
         INSERT INTO ceks (licensePlate, dateTime, odometer, petrolStation, fuelType, fuelPrice, refueled, total, currency)
-        VALUES (:licencePlate, :dateTime, :odometer, :petrolStation, :fuelType, :fuelPrice :refueled, :total, :currency)
+        VALUES (
+                ?,?,?,?,?,?,?,?,?
+                 )
         MySQL;
 
 
     $stmt = $pdo->prepare($sql);
-    $stmt->execute($receipt->toArray());
+//    $stmt->execute($receipt->toArray());
+    $stmt->execute([
+         $receipt->licencePlate, $receipt->dateTime, $receipt->odometer, $receipt->petrolStation, $receipt->fuelType, $receipt->fuelPrice, $receipt->refueled, $receipt->total, $receipt->currency
+    ]);
 
 }
 
