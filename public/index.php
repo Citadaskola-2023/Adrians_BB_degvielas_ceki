@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         odometer: $_POST['odometer'],
         petrolStation: $_POST['petrol_station'],
         fuelType: $_POST['fuel_type'],
+        fuelPrice: $_POST['fuel_price'],
         refueled: $_POST['refueled'],
         total: $_POST['total'],
         currency: $_POST['currency'],
@@ -24,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $sql = <<<MySQL
         INSERT INTO fuel_receipts (license_plate, date_time, odometer, petrol_station, fuel_type, refueled, total, currency, fuel_price)
-        VALUES (:licencePlate, :dateTime, :odometer, :petrolStation, :fuelType, :refueled, :total, :currency, :fuelPrice)
+        VALUES (:licencePlate, :dateTime, :odometer, :petrolStation, :fuelType, :fuelPrice :refueled, :total, :currency)
         MySQL;
 
 
@@ -115,11 +116,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <label for="fuel_type">Fuel Type:</label>
     <input type="text" name="fuel_type" id="fuel_type">
 
+    <label for="fuel_price">Fuel Price:</label>
+    <input type="number" step="0.01" name="fuel_price" id="fuel_price">
+
     <label for="refueled">Refueled (liters):</label>
     <input type="number" name="refueled" id="refueled">
 
     <label for="total">Total (currency):</label>
     <input type="number" name="total" id="total">
+
+    <label for="odometer">Odometer (km):</label>
+    <input type="number" name="odometer" id="odometer">
 
     <label for="currency">Currency:</label>
     <select name="currency" id="currency">
@@ -136,21 +143,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <option value="KRW">South Korean Won</option>
         <option value="INR">Indian Rupee</option>
         <option value="BGN">Bulgarian Lev</option>
-        <optionvalue="HRK">Croatian Kuna</option>
+        <option value="HRK">Croatian Kuna</option>
         <option value="DKK">Danish Krone</option>
         <option value="HUF">Hungarian Forint</option>
         <option value="PLN">Polish Zloty</option>
         <option value="RON">Romanian Leu</option>
         <option value="RUB">Russian Ruble</option>
         <option value="TRY">Turkish Lira</option>
+
     </select>
 
-    <label for="fuel_price">Fuel Price:</label>
-    <input type="number" step="0.01" name="fuel_price" id="fuel_price">
 
     <input type="submit" value="Submit">
 </form>
 </body>
 
 </html>
-
