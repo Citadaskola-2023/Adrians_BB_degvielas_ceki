@@ -31,10 +31,10 @@ class FuelReceiptDTO
             'odometer' => $this->odometer,
             'petrolStation' => $this->petrolStation,
             'fuelType' => $this->fuelType,
+            'fuelPrice' => $this->fuelPrice,
             'refueled' => $this->refueled,
             'total' => $this->total,
             'currency' => $this->currency,
-            'fuelPrice' => $this->fuelPrice,
         ];
     }
 

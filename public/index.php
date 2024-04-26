@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $sql = <<<MySQL
-        INSERT INTO ceks (licensePlate, dateTime, odometer, petrolStation, fuelType, refueled, total, currency, fuelPrice)
+        INSERT INTO ceks (licensePlate, dateTime, odometer, petrolStation, fuelType, fuelPrice, refueled, total, currency)
         VALUES (:licencePlate, :dateTime, :odometer, :petrolStation, :fuelType, :fuelPrice :refueled, :total, :currency)
         MySQL;
 
