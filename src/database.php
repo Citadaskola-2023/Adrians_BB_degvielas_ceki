@@ -26,6 +26,8 @@ class database
     public function login(string $username, string $password): void
     {
         if ($username === 'kachow' && $password === '1500') {
+            // set session with successfully logged-in user
+            // promt: show me simple auth methods with bcrypted passwords
             header("Location: /receipt");
             exit;
         } else {

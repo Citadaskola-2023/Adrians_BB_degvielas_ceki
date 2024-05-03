@@ -112,7 +112,7 @@ require '../controller/header.php';
     <h1>Fuel Receipt Form</h1>
     <form method="post">
         <label for="license_plate">License Plate:</label>
-        <input type="text" name="license_plate" id="license_plate">
+        <input type="text" name="license_plate" id="license_plate" required>
 
         <label for="date_time">Date and Time:</label>
         <input type="datetime-local" name="date_time" id="date_time">
