@@ -32,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     $stmt = $pdo->prepare($sql);
-//    $stmt->execute($receipt->toArray());
     $stmt->execute([
         $receipt->licencePlate, $receipt->dateTime, $receipt->odometer, $receipt->petrolStation, $receipt->fuelType, $receipt->fuelPrice, $receipt->refueled, $receipt->total, $receipt->currency
     ]);
@@ -111,7 +110,7 @@ require '../controller/header.php';
 
     <body>
     <h1>Fuel Receipt Form</h1>
-    <form action="process.php" method="post">
+    <form method="post">
         <label for="license_plate">License Plate:</label>
         <input type="text" name="license_plate" id="license_plate">
 
