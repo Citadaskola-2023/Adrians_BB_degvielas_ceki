@@ -154,7 +154,7 @@ if (!empty($results)) {
     }
 </style>
 
-<form method="POST" action="/filter">
+<form method="POST">
     <table>
         <tbody>
         <tr>

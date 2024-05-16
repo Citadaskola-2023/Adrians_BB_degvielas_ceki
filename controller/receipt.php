@@ -4,7 +4,6 @@ require __DIR__ . '/../src/FuelReceiptDTO.php';
 require __DIR__ . '/../src/database.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Create a new FuelReceiptDTO object
     $receipt = new \App\FuelReceiptDTO(
         licencePlate: $_POST['license_plate'],
         dateTime: $_POST['date_time'],
@@ -18,23 +17,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     );
 
     try {
-        // Connect to the database
         $db = new \App\database();
         $pdo = $db->connectdatabase();
     } catch (PDOException $e) {
         throw new PDOException($e->getMessage(), (int)$e->getCode());
     }
 
-    // SQL query with placeholders
     $sql = '
         INSERT INTO Form (licence_plate, date_time, petrol_station, fuel_type, refueled, currency, fuel_price, odometer, total)
         VALUES (:licence_plate, :date_time, :petrol_station, :fuel_type, :refueled, :currency, :fuel_price, :odometer, :total)
     ';
 
-    // Prepare the SQL statement
     $stmt = $pdo->prepare($sql);
 
-    // Get the data as an associative array
     $data = [
         ':licence_plate' => $receipt->licencePlate,
         ':date_time' => $receipt->dateTime,
@@ -46,11 +41,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ':odometer' => $receipt->odometer,
         ':total' => $receipt->total
     ];
-
-    // Debug output to check data
-    var_dump($data);
-
-    // Execute the statement with the data array
     $stmt->execute($data);
 }
 
