@@ -1,6 +1,7 @@
 <?php
 
 require __DIR__ . '/../src/FuelReceiptDTO.php';
+require __DIR__ . '/../src/database.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $receipt = new \App\FuelReceiptDTO(
@@ -16,24 +17,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     );
 
     try {
-        $pdo = new PDO("mysql:host=mysql;dbname=myapp;charset=utf8mb4", 'root', 'root', [
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        ]);
+        $db = new \App\database();
+        $pdo=$db->connectdatabase();
     } catch (PDOException $e) {
         throw new PDOException($e->getMessage(), (int)$e->getCode());
     }
 
     $sql = <<<MySQL
-        INSERT INTO ceks (licensePlate, dateTime, odometer, petrolStation, fuelType, fuelPrice, refueled, total, currency)
-        VALUES (
-                ?,?,?,?,?,?,?,?,?
-                 )
+        INSERT INTO Form(licence_plate, date_time,
+         petrol_station, fuel_type, refueled, currency, fuel_price, odometer, total)
+         VALUES(:licence_plate, :date_time, :petrol_station, :fuel_type, :refueled, :currency, :fuel_price, :odometer, :total));
         MySQL;
 
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
-        $receipt->licencePlate, $receipt->dateTime, $receipt->odometer, $receipt->petrolStation, $receipt->fuelType, $receipt->fuelPrice, $receipt->refueled, $receipt->total, $receipt->currency
+        $receipt->licencePlate, $receipt->dateTime, $receipt->petrolStation, $receipt->fuelType, $receipt->refueled, $receipt->currency, $receipt->fuelPrice, $receipt->odometer, $receipt->total
     ]);
 
 }
