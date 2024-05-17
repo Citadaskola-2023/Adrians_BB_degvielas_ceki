@@ -10,7 +10,7 @@ Welcome to the Fuel Receipt Management System! This project is designed to manag
 2. [Docker](https://www.docker.com/get-started/)
 
 
-## Run the project
+## Instal the system on your computer
 
 
 1. Clone the Repository:
@@ -21,8 +21,8 @@ Welcome to the Fuel Receipt Management System! This project is designed to manag
   composer install`
 3. Start the project and container using docker:
   `docker compose up -d`
-4. Open you web browser and navigate to `https:localhost`
-5. To enter the account, use the following login:
+4. Open your web browser and navigate to `https:localhost`
+5. To access the system, use the following login credentials:
     Username: `kachow`; Password: `1500`
 
 ## License
