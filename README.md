@@ -6,8 +6,8 @@ Welcome to the Fuel Receipt Management System! This project is designed to manag
 
 ## Requirements
 
-1. [Git](https://git-scm.com/)
-2. [Docker](https://www.docker.com/get-started/)
+1. Install[Git](https://git-scm.com/)
+2. Install [Docker](https://www.docker.com/get-started/)
 
 
 ## Instal the system on your computer
